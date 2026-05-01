@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">🧾 Checkout</h2>
+
+<form method="POST" action="{% url 'create-order-web' %}" class="card p-4 shadow-sm">
+
+    {% csrf_token %}
+
+    <!-- 📍 ADDRESS -->
+    <div class="mb-3">
+        <label>Address</label>
+        <textarea name="address" class="form-control" required></textarea>
+    </div>
+
+    <!-- 📞 PHONE -->
+    <div class="mb-3">
+        <label>Phone Number</label>
+        <input type="text" name="phone" class="form-control" required>
+    </div>
+
+    <!-- 💳 PAYMENT METHOD -->
+    <div class="mb-3">
+        <label>Payment Method</label>
+        <select name="payment_method" class="form-control" required>
+            <option value="cod">Cash on Delivery</option>
+            <option value="card">Card Payment</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success w-100">
+        Place Order
+    </button>
+
+</form>
+
+{% endblock %}

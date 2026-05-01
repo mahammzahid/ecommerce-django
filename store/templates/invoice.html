@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">🧾 Invoice</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <h5>Order ID: #{{ order.id }}</h5>
+    <p>Date: {{ order.created_at }}</p>
+    <p>Status: <b>{{ order.status }}</b></p>
+
+    <hr>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>Rs {{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs {{ item.price|add:item.quantity }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <h4 class="text-end text-success">
+        Grand Total: Rs {{ total }}
+    </h4>
+
+</div>
+
+{% endblock %}

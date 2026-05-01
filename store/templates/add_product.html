@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+
+<body>
+<div class="form-box">
+<h2>Add Product</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    Name:
+    <input type="text" name="name"><br><br>
+
+    Price:
+    <input type="number" name="price"><br><br>
+
+    <button type="submit">Add Product</button>
+</form>
+<a class="back" href="{% url 'product-list' %}">← Back to Products</a>
+</div>
+</body>
